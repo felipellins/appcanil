@@ -1,0 +1,73 @@
+.cabeça{
+    --background:rgb(0, 85, 64);
+}
+
+.titulo{
+
+    color:white;
+}
+
+.bg-login{
+
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/images/l1.jpg');
+
+
+
+}
+.logins{
+    font-size: small;
+    color: black;
+    display: block;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+.redes{
+    font-size: small;
+    text-align: center;
+}
+ion-col{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.sobrecima{
+
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgb(0, 13, 85), transparent)  
+}
+.entrar{
+    font-size:40px;
+    color: white; 
+}
+.alterInput{
+   
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    
+}
+.tamanho{
+    padding: 30px
+}
+.pg-tr{
+    background: transparent;
+}
+.butlogin{
+    padding: 10px;
+    border-radius: 100px;
+    background: rgb(7, 7, 7);
+    color:white;
+}
+.txtnovac{
+    color: white;
+    
+}
+

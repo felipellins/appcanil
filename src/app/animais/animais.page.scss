@@ -1,0 +1,28 @@
+.sobrecima{
+
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgb(0, 13, 85), transparent)  
+}
+.bg-animais{
+
+    height: 100%;
+    width: 100%;
+    background-image: url('../../assets/images/l1.jpg');
+    right:0;
+    left:0;
+    height: 100%;
+    top: 0%;
+    position: absolute;
+
+}.welcome-card ion-img {
+    max-height: 35vh;
+    overflow: hidden;
+  }
+.ion-img {
+    height: 32px;
+    width: 32px;
+    border: 1px solid green;
+    border-radius: 100px;
+    padding: 4px;
+  }

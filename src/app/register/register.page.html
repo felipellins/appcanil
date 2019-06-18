@@ -1,0 +1,62 @@
+
+
+
+<ion-content >
+  
+  <div class="bg-register" >
+       
+     
+    <div class="sobrecima">
+     <!-- conteudo do registro -->
+      <div>
+       
+        <!--logo-->
+        <div class="center">
+           
+            <h5 class="entrar">Digite seus dados</h5>
+        </div>
+       
+        <!--form e but--> 
+         <div class="tamanho">
+
+            <ion-row >
+                <div class="upload-container">
+                    <ion-icon *ngIf="!novoUsuario.picture" (click)="takePhoto()" class="upload-icon" name="contact"></ion-icon>">
+                    <ion-img *ngIf="novoUsuario.picture" [src]="novoUsuario.picture"></ion-img>
+                </div>
+            </ion-row>
+            <ion-row class="alterInput mg-top-10">
+              <ion-input [(ngModel)]="novoUsuario.nome" placeholder="Como se chama?"></ion-input>
+            </ion-row>
+            <ion-row class="alterInput mg-top-10">
+              <ion-input [(ngModel)]="novoUsuario.sexo" placeholder="Digite o seu sexo"></ion-input>
+            </ion-row>
+            
+            <ion-row class="alterInput mg-top-10">
+              <ion-input type="date" [(ngModel)]="novoUsuario.datanasc" placeholder="Digite sua data nascimento"></ion-input>
+            </ion-row>
+
+            <ion-row class="alterInput mg-top-10">
+              <ion-input [(ngModel)]="novoUsuario.email"  placeholder="Digite seu E-mail"></ion-input>
+            </ion-row>
+
+            <ion-row class="alterInput mg-top-10">
+              <ion-input [(ngModel)]="novoUsuario.password" type="password" placeholder="Escolha sua senha"></ion-input>
+            </ion-row>
+            <!-- butao login-->
+            <div class="butregist center mg-top-30"(click)="cadastrar()" >
+              Cadastrar
+            </div> 
+            <!-- nova conta-->
+            <div class="butregist center mg-top-10"(click)="voltlogin()">
+            Voltar
+            </div>
+         </div>
+
+      </div>
+
+    </div>
+
+</div>
+   
+</ion-content>

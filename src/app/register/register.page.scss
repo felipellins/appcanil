@@ -1,0 +1,68 @@
+.cabeçalho{
+    --background:rgb(0, 85, 64);
+   
+}
+
+.titulo{
+
+    color:white;
+}
+.bg-register{
+
+    height: 100%;
+    width: 100%;
+    background-image: url('../../assets/images/l1.jpg');
+    right:0;
+    left:0;
+    height: 100%;
+    top: 0%;
+    position: absolute;
+    
+  
+
+}.sobrecima{
+
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top, rgb(0, 13, 85), transparent)    
+}
+.entrar{
+    font-size:40px; 
+    color: white;
+}
+.alterInput{
+   
+    color: white;
+    border: 1px solid white;
+    padding: 1px;
+    font-size: 15px;
+    border-radius: 10px;
+    margin-bottom: 2px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+.upload-container {
+   
+    width: 100%;
+    text-align: center;
+    
+    .upload-icon {
+        font-size: 100px;
+        color: #777;
+    }
+}
+.tamanho{
+    padding: 30px
+}
+.pg-tr{
+    background: transparent;
+}
+.butregist{
+    padding: 10px;
+    border-radius: 100px;
+    background: rgb(7, 7, 7);
+    color:white;
+}
+

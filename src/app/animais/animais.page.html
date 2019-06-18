@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+     <button slot="start">
+        <ion-menu-button>
+
+
+        </ion-menu-button>
+
+     </button>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content >
+  <div *ngIf="!loading">
+    <ion-card *ngFor="let animal of animais">
+      <ion-item>
+          <ion-img slot="start" *ngIf="animal.picture" [src]="animal.picture"></ion-img>
+        <ion-icon (click)="edit(animal)" color="blue" name="create" slot="end"></ion-icon>
+        <ion-icon (click)="remove(animal.uid)" color="danger" name="trash" slot="end"></ion-icon>
+        <ion-label>{{ animal.nome }}</ion-label>
+      </ion-item>
+    
+      <ion-card-content>
+        {{ animal.tipo }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="loading">
+    <p>Aguarde...</p>
+  </div>
+</ion-content>

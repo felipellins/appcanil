@@ -1,0 +1,38 @@
+
+
+<ion-header>
+  <ion-toolbar>
+     <button slot="start">
+        <ion-menu-button>
+
+
+        </ion-menu-button>
+
+     </button>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content >
+  <div *ngIf="!loading" class="bg-menu" >
+    <ion-card *ngFor="let animal of animais"class="item">
+      <ion-item >
+        
+        <ion-label>{{ animal.nome }}</ion-label>
+        <div class="BUT" (click)="visuanimal(animal)">visualizar</div>
+      </ion-item>
+    
+      <ion-card-content>
+        {{ animal.tipo }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="loading">
+    <p>Aguarde...</p>
+  </div>
+</ion-content>
+

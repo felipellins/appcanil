@@ -1,0 +1,53 @@
+.fundo{
+    position: absolute;
+    right:0;
+    left:0;
+    height: 100%;
+    background:rgb(0, 85, 64);
+    top: 0%;
+
+}
+.alterInput{
+   
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    
+}
+.sobrecima{
+
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgb(0, 13, 85), transparent)  
+}
+.bg-menu{
+
+    height: 100%;
+    width: 100%;
+    background-image: url('../../assets/images/l1.jpg');
+    right:0;
+    left:0;
+    height: 100%;
+    top: 0%;
+    position: absolute;
+    
+
+}.item{
+    background:  white;
+}
+.texto{
+    color: white;
+
+}.BUT{
+    padding: 8px;
+    border-radius: 100px;
+    background: rgb(7, 7, 7);
+    color:white;
+    position: relative;   
+    left: 20px;
+    margin-right: 10%;
+}
+

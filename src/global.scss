@@ -9,3 +9,44 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+// fontes
+
+//@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+// para todo o projeto
+//*{
+//    font-family: 'Courgette', cursive;
+//}
+
+// clases de cor
+
+//.classeAzul{
+//    color: $azul;
+//}
+//.classePreto{
+ //   color: $preto;
+//}
+.center{
+    text-align:center;
+}
+
+// espaço entre
+.mg-top-5{
+    margin-top: 5px;
+}
+.mg-top-10{
+    margin-top: 10px;
+}
+.mg-top-20{
+    margin-top: 20px;
+}.mg-top-30{
+    margin-top: 30px;
+}
+
+//cores
+.gl-cabe{
+    --background:rgb(0, 40, 85);
+   
+}
+
