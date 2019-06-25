@@ -3,7 +3,7 @@ import { Animal } from '../model/animal';
 import { DBService } from '../services/db.service';
 import { ToastController, MenuController, } from '@ionic/angular';
 import {  Router } from '@angular/router';
-
+import { ModalController } from '@ionic/angular';
 
 // camera
 import { CameraService } from '../services/camera.service';
@@ -25,7 +25,7 @@ export class EditanimalPage implements OnInit {
 
   
 
-  constructor( private router:Router,private dbService: DBService,public toastCtrl:ToastController, private menu: MenuController,private cameraService: CameraService) {
+  constructor( public modalController: ModalController,private router:Router,private dbService: DBService,public toastCtrl:ToastController, private menu: MenuController,private cameraService: CameraService) {
       this.novoAnimal = new Animal();
     
   }
@@ -65,9 +65,10 @@ export class EditanimalPage implements OnInit {
       };
      
       this.dbService.update('/animais', updatingObject)
-          .then(() => {          
-         this.presentToast('Animal alterado com sucesso');
-         this.router.navigate(['/animais'])
+          .then(() => { 
+           this.modalController.dismiss(this.novoAnimal);         
+          this.presentToast('Animal alterado com sucesso');
+          this.router.navigate(['/animais'])
           }).catch(error => {
               console.log(error);
           });
