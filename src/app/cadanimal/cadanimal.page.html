@@ -1,74 +1,75 @@
 
+
 <ion-header > 
-    <ion-toolbar class="gl-cabe">
-      <ion-buttons slot="start">
-        <ion-menu-button color="light"></ion-menu-button>
-      </ion-buttons>
-      <ion-title color="light">Perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="gl-cabe">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 
 <ion-content >
-  
-  <div  class="bg-cadanimal" >
-       
-  
-    <div class="sobrecima">
-     <!-- conteudo do registro -->
-      <div >
-       
-        <!--logo-->
-        <div class="center ">
-           
-            <h5 class="entrar">Cadastrar o animal</h5>
-        </div>
 
-      
-       
-        <!--form e but--> 
-         <div class="center">
-           
-          <ion-row >
-                <div class="upload-container">
-                    <ion-icon *ngIf="!novoAnimal.picture" (click)="takePhoto()" class="upload-icon" name="paw"></ion-icon>
-                    <ion-img *ngIf="novoAnimal.picture" [src]="novoAnimal.picture"></ion-img>
-                </div>
-            </ion-row>
+<div  class="bg-cadanimal" >
+     
 
-            <ion-row class="alterInput  mg-top-10">
-              <ion-input [(ngModel)]="novoAnimal.nome" placeholder="Digite o nome do animal"></ion-input>
-            </ion-row>
-            <ion-row class="alterInput  mg-top-10">
-              <ion-input [(ngModel)]="novoAnimal.porte" placeholder="Digite seu porte"></ion-input>
-            </ion-row>
-            
-            <ion-row class="alterInput  mg-top-10">
-              <ion-input  [(ngModel)]="novoAnimal.raca" placeholder="Digite sua raça"></ion-input>
-            </ion-row>
-
-            <ion-row class="alterInput mg-top-10">
-              <ion-input [(ngModel)]="novoAnimal.cor"  placeholder="Digite sua cor"></ion-input>
-            </ion-row>
-
-            <ion-row class="alterInput mg-top-10">
-              <ion-input [(ngModel)]="novoAnimal.tipo"  placeholder="Digite a espécie de animal"></ion-input>
-            </ion-row>
-            <!-- butao login-->
-            <div class="butregist center mg-top-30"(click)="save()" >
-              Cadastrar
-            </div> 
-            <!-- nova conta-->
-            <div class="butregist center mg-top-10"(click)="voltlogin()">
-            Voltar
-            </div>
-         </div>
-
+  <div class="sobrecima">
+   <!-- conteudo do registro -->
+    <div >
+     
+      <!--logo-->
+      <div class="center ">
+         
+          <h5 class="entrar">Cadastrar o animal</h5>
       </div>
 
+    
+     
+      <!--form e but--> 
+       <div class="center">
+         
+        <ion-row >
+              <div class="upload-container">
+                  <ion-icon *ngIf="!novoAnimal.picture" (click)="takePhoto()" class="upload-icon" name="paw"></ion-icon>
+                  <ion-img *ngIf="novoAnimal.picture" [src]="novoAnimal.picture"></ion-img>
+              </div>
+          </ion-row>
+
+          <ion-row class="alterInput  mg-top-10">
+            <ion-input [(ngModel)]="novoAnimal.nome" placeholder="Digite o nome do animal"></ion-input>
+          </ion-row>
+          <ion-row class="alterInput  mg-top-10">
+            <ion-input [(ngModel)]="novoAnimal.porte" placeholder="Digite seu porte"></ion-input>
+          </ion-row>
+          
+          <ion-row class="alterInput  mg-top-10">
+            <ion-input  [(ngModel)]="novoAnimal.raca" placeholder="Digite sua raça"></ion-input>
+          </ion-row>
+
+          <ion-row class="alterInput mg-top-10">
+            <ion-input [(ngModel)]="novoAnimal.cor"  placeholder="Digite sua cor"></ion-input>
+          </ion-row>
+
+          <ion-row class="alterInput mg-top-10">
+            <ion-input [(ngModel)]="novoAnimal.tipo"  placeholder="Digite a espécie de animal"></ion-input>
+          </ion-row>
+          <!-- butao login-->
+          <div class="butregist center mg-top-30"(click)="save()" >
+            Cadastrar
+          </div> 
+          <!-- nova conta-->
+          <div class="butregist center mg-top-10"(click)="voltlogin()">
+          Voltar
+          </div>
+       </div>
+
     </div>
-   
+
+  </div>
+ 
 
 </div>
-   
+ 
 </ion-content>

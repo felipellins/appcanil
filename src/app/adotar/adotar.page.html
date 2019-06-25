@@ -1,23 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>adotar</ion-title>
+<ion-header > 
+  <ion-toolbar class="gl-cabe">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">Menu</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content >
-  <div >
-    <ion-card >
-      <ion-item>
+  <div class="bg-menu "  >
+    <div class="sobrecima">
+    <ion-card class="item">
+     
+        
+        <ion-card-header>
+            <div class="BUT" (click)="adotar(animal)">Adotar</div> 
+          <ion-card-title class="titulo">{{ animal?.nome }}</ion-card-title>
          
+        </ion-card-header>
+      
+        <ion-card-content>
+         <div class="texto">
+          <ion-row > raça:{{ animal?.raca}} cor:{{ animal?.cor}}  </ion-row>
+          <ion-row >porte:{{ animal?.porte}} tipo:{{ animal?.tipo}}  </ion-row>
+          
+        </div>
+
+
+        </ion-card-content> 
        
-        <ion-label>{{ animal.nome }}</ion-label>
-      </ion-item>
-    
-      <ion-card-content>
-        {{ animal.tipo }}
-      </ion-card-content>
     </ion-card>
+        
+       
+
+
   </div>
+ </div>
   
 </ion-content>
 

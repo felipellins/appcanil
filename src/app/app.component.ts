@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Usuario } from './model/usuario';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   // pagina a ser iniciada primerio
- 
-  public appPages = [
+  
+  public opcoesApp = [
     {
       title: 'Cadastrar Animal',
       url: '/cadanimal',
@@ -22,10 +23,16 @@ export class AppComponent {
     {
       title: 'Ver animais',
       url: '/animais',
-      icon: 'logo-model-s'
+      icon: 'paw' 
+    },{
+      title: 'Inicio',
+      url: '/menu',
+      icon: 'paw' 
     }
    
   ];
+  
+  usuario: Usuario;
   
   constructor(
     private platform: Platform,
@@ -34,10 +41,16 @@ export class AppComponent {
     private router: Router,
     private fAuth: AngularFireAuth
   ) {
-    this.initializeApp();
+    this.inicializarApp();
+  }
+  login() {
+    this.fAuth.auth.signOut()
+    .then(resultado => {
+      this.router.navigate(["/login"]);
+    })
   }
 
-  initializeApp() {
+  inicializarApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();

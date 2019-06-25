@@ -9,6 +9,7 @@ import { DBService } from '../services/db.service';
 import { CameraService } from '../services/camera.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
+import { LoginPage } from '../login/login.page';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterPage implements OnInit {
    
   novoUsuario:Usuario;
 
-
+   loginPage:LoginPage;
+ 
   constructor(
     private router:Router,
     private afAuth:AngularFireAuth,
@@ -34,7 +36,7 @@ export class RegisterPage implements OnInit {
 
   cadastrar(){
     this.afAuth.auth.createUserWithEmailAndPassword(this.novoUsuario.email,this.novoUsuario.password)
-     
+    
     .then(result=>{
       this.dbService.insertInList<Usuario>('/usuarios', this.novoUsuario)
       this.presentToast('Usuario cadastrado com sucesso');
@@ -66,6 +68,7 @@ export class RegisterPage implements OnInit {
                         //nome da pagina redirecionamento
     this.router.navigate(['/login'])
   }
+  
 
 
   ngOnInit() {

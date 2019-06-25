@@ -1,13 +1,5 @@
-.cabeçalho{
-    --background:rgb(0, 85, 64);
-   
-}
 
-.titulo{
-
-    color:white;
-}
-.bg-register{
+.bg-cadanimal{
 
     height: 100%;
     width: 100%;
@@ -17,14 +9,32 @@
     height: 100%;
     top: 0%;
     position: absolute;
+
+}
+
+.upload-container {
+   
+    width: 100%;
+    text-align: center;
     
-  
-
+    .upload-icon {
+        font-size: 100px;
+        color: #777;
+    }
+}
+.fundo{
+   
+    position: absolute;
+    right:0;
+    left:0;
+    height: 100%;
+    top: 0%;
+   
 }.sobrecima{
-
+   
     height: 100%;
     width: 100%;
-    background: linear-gradient(to top, rgb(0, 13, 85), transparent)    
+    background: linear-gradient(to top, rgb(0, 13, 85), transparent)  
 }
 .entrar{
     font-size:40px; 
@@ -42,16 +52,7 @@
     margin-left: auto;
     margin-right: auto;
    
-}
-.upload-container {
-   
-    width: 100%;
-    text-align: center;
     
-    .upload-icon {
-        font-size: 100px;
-        color: #777;
-    }
 }
 .tamanho{
     padding: 30px
@@ -60,10 +61,18 @@
     background: transparent;
 }
 .butregist{
-    padding: 10px;
-    border-radius: 100px;
+    padding: 4px;
+    border-radius: 50px;
     background: rgb(7, 7, 7);
     color:white;
-   
-
+    margin-bottom: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.altura{
+    margin-top:-5px;
+}
+.magin-right-20{
+    margin-right: 100px;
 }

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import {MatSelectModule} from '@angular/material/select';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -20,8 +19,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    MatSelectModule
+    RouterModule.forChild(routes)
   ],
   declarations: [CadanimalPage]
 })

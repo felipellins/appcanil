@@ -6,10 +6,10 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'animais', loadChildren: './animais/animais.module#AnimaisPageModule' },
-  { path: 'cadanimal', loadChildren: './cadanimal/cadanimal.module#CadanimalPageModule' },
   { path: '', loadChildren: './menu/menu.module#MenuPageModule' },
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-  { path: 'adotar/:uid', loadChildren: './adotar/adotar.module#AdotarPageModule' }
+  { path: 'adotar/:uid', loadChildren: './adotar/adotar.module#AdotarPageModule' },
+  { path: 'cadanimal', loadChildren: './cadanimal/cadanimal.module#CadanimalPageModule' }
 ];
 
 @NgModule({

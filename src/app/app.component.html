@@ -2,14 +2,12 @@
   <ion-split-pane>
     <ion-menu>
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar class="gl-cabe">
             <ion-item color="Success">
                 <ion-row>
                 </ion-row>
                 <ion-col size="4">
-                  <ion-avatar>
-                    <img src>
-                  </ion-avatar>
+                 
                 </ion-col>
                 <ion-col *ngIf="usuario" size="8">
                   <ion-label color="Success">{{usuario.nome}}</ion-label>
@@ -19,17 +17,17 @@
       </ion-header>
       <ion-content color="dark" mode="ios">
         <ion-list mode="ios">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" color="Secondary">
-              <ion-icon slot="start" [name]="p.icon" color="secondary" mode="ios"></ion-icon>
+          <ion-menu-toggle auto-hide="false" *ngFor="let op of opcoesApp">
+            <ion-item [routerDirection]="'root'" [routerLink]="[op.url]" color="Secondary">
+              <ion-icon slot="start" [name]="op.icon" color="secondary" mode="ios"></ion-icon>
               <ion-label>
-                {{p.title}}
+                {{op.title}}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
-      <ion-item lines="none" (click)="logout()" color="Success">
+      <ion-item lines="none" (click)="login()" color="Success" class="gl-cabe">
         <ion-icon slot="start" name="log-out" color="Success" mode="ios"></ion-icon>
         <ion-label color="Success">Sair</ion-label>
       </ion-item>

@@ -6,14 +6,14 @@
 }
 .bg-animais{
 
-    height: 100%;
-    width: 100%;
-    background-image: url('../../assets/images/l1.jpg');
-    right:0;
-    left:0;
-    height: 100%;
-    top: 0%;
-    position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../assets/images/l1.jpg');
+  right:0;
+  left:0;
+  height: 100%;
+  top: 0%;
+  position: absolute;
 
 }.welcome-card ion-img {
     max-height: 35vh;
@@ -26,3 +26,29 @@
     border-radius: 100px;
     padding: 4px;
   }
+  .item{
+    background:  white;
+}
+.BUT{
+  padding: 4px;
+  border-radius: 50px;
+  background: #070707;
+  color: white;
+  margin-bottom: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80%;
+  
+  
+}
+.butregist{
+  padding: 5px;
+  border-radius: 100px;
+  background: #070707;
+  color: white;
+  margin-top: 80%;
+  width: 50%;
+  margin-left: 80px;
+
+}

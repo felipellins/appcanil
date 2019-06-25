@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Usuario } from '../model/usuario';
 
 @Component({
@@ -14,9 +14,12 @@ export class LoginPage implements OnInit {
 
   constructor(private router:Router,
     private afAuth: AngularFireAuth,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public modalController: ModalController,
+   ) {
 
       this.usuario = new Usuario;
+
      }
 
     entrar(){
@@ -29,7 +32,13 @@ export class LoginPage implements OnInit {
         delete this.usuario.password;
       })
     }
+    pegarusuario(){
+     
+     this.usuario;
+      
 
+    }
+   
     async presentToast(message: string){
       const toast = await this.toastCtrl.create({
         message: message,
@@ -39,7 +48,8 @@ export class LoginPage implements OnInit {
     }
 
   register(){
-    this.router.navigate(['/register'])
+   
+     this.router.navigate(['/register'])
   }
   ngOnInit() {
   }

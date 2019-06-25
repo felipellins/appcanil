@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../model/animal';
 import { DBService } from '../services/db.service';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
+import { EditanimalPage } from '../editanimal/editanimal.page';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-animais',
@@ -13,7 +15,7 @@ export class AnimaisPage  {
   loading: boolean;
   animais: Animal[];
 
-  constructor( private dbService: DBService, public toastController: ToastController) {
+  constructor(private router:Router,public modalController: ModalController, private dbService: DBService, public toastController: ToastController) {
     this.init();
   }
 
@@ -21,12 +23,12 @@ export class AnimaisPage  {
     this.loading = true;
 
   
-    await this.loadAnimais();
+    await this.listarAnimais();
   }
 
   
 
-  private async loadAnimais() {
+  private async listarAnimais() {
     this.dbService.listWithUIDs<Animal>('/animais')
       .then(animais => {
         this.animais = animais;
@@ -38,33 +40,37 @@ export class AnimaisPage  {
 
  
 
-  //async add() {
-   // const modal = await this.modalController.create({
-    //  component: NewContactPage
-    //});
+  async add() {
+    const modal = await this.modalController.create({
+      component:EditanimalPage
+    });
 
-   // modal.onDidDismiss()
-    //  .then(result => {
-     //   if (result.data) {
-      //    this.confirmAdd();
-      //  }
-     // });
+    modal.onDidDismiss()
+      .then(result => {
+        if (result.data) {
+          this.confirmAdd();
+        }
+      });
 
-    //return  await modal.present();
-  //}
+    return  await modal.present();
+  }
 
   private confirmAdd() {
     this.presentToast('Animal adicionado com sucesso');
-    this.loadAnimais();
+    this.listarAnimais()
   }
 
   remove(uid: string) {
     this.dbService.remove('/animais', uid)
       .then(() => {
         this.presentToast('Animal removido com sucesso');
-        this.loadAnimais();
+        this.listarAnimais()
       });
   }
+  voltmenu(){
+    this.router.navigate(['/menu'])
+  }
+
 
   async presentToast(message: string) {
     const toast = await this.toastController.create({
@@ -74,22 +80,22 @@ export class AnimaisPage  {
     toast.present();
   }
 
-  //async edit(contact: Animal) {
-   // const modal = await this.modalController.create({
-   //   component: NewContactPage,
-    //  componentProps: {
-    //    editingContact: contact
-    //  }
-   // });
+  async edit(animal: Animal) {
+    const modal = await this.modalController.create({
+      component: EditanimalPage,
+      componentProps: {
+        editingAnimal: animal
+      }
+    });
 
-   // modal.onDidDismiss()
-    //  .then(result => {
-     //   if (result.data) {
-      //    this.confirmAdd();
-      //  }
-     // });
+    modal.onDidDismiss()
+      .then(result => {
+        if (result.data) {
+          this.confirmAdd();
+        }
+      });
 
-   // return  await modal.present();
- // }
+    return  await modal.present();
+  }
 
 }

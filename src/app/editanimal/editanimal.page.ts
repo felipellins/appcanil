@@ -4,21 +4,21 @@ import { DBService } from '../services/db.service';
 import { ToastController, MenuController, } from '@ionic/angular';
 import {  Router } from '@angular/router';
 
- // camera
+
+// camera
 import { CameraService } from '../services/camera.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
 
 
-
 @Component({
-  selector: 'app-cadanimal',
-  templateUrl: './cadanimal.page.html',
-  styleUrls: ['./cadanimal.page.scss'],
+  selector: 'app-editanimal',
+  templateUrl: './editanimal.page.html',
+  styleUrls: ['./editanimal.page.scss'],
   providers: [CameraService, Camera, Base64],
 })
-export class CadanimalPage implements OnInit {
- 
+export class EditanimalPage implements OnInit {
+
   editingAnimal: Animal;
 
   novoAnimal: Animal;
@@ -31,16 +31,21 @@ export class CadanimalPage implements OnInit {
   }
 
   ngOnInit() {
-     
+      if (this.editingAnimal) {
+          this.novoAnimal= this.editingAnimal;
+      }
   }
 
 
   save()  {
     this.menu.enable(true, 'first');
     this.menu.open('first');
-     
-          this.insert();
-      
+      if (this.editingAnimal) {
+          this.edit();
+      } else {
+        //  this.insert();
+        console.log("errrorr");
+      }
   }
   async presentToast(message:string){
       
@@ -52,7 +57,22 @@ export class CadanimalPage implements OnInit {
 
   }  
 
-  voltlogin(){
+
+  private edit() {
+      const updatingObject = { cor: this.novoAnimal.cor,nome: this.novoAnimal.nome, porte:this.novoAnimal.porte,
+                               raca:this.novoAnimal.raca,tipo: this.novoAnimal.tipo,
+                              
+      };
+     
+      this.dbService.update('/animais', updatingObject)
+          .then(() => {          
+         this.presentToast('Animal alterado com sucesso');
+         this.router.navigate(['/animais'])
+          }).catch(error => {
+              console.log(error);
+          });
+  }
+  voltanimais(){
 
     this.router.navigate(['/animais'])
   }
@@ -61,14 +81,5 @@ export class CadanimalPage implements OnInit {
     this.novoAnimal.picture = await this.cameraService.takePhoto();
 }
 
-  private insert() {
-      this.dbService.insertInList<Animal>('/animais', this.novoAnimal)
-          .then(() => {
-          this.presentToast('Animal cadastrado com sucesso');
-          this.router.navigate(['/animais']);
-        
-          }).catch(error => {
-              console.log(error);
-          });
-  }
+ 
 }

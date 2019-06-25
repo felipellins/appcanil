@@ -5,7 +5,7 @@ export class Animal {
     raca:string;
     cor: string;
     tipo: string;
-    uid: string;
+    uid: string; 
     picture:string;
 
 
