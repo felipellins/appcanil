@@ -9,6 +9,7 @@ import { ModalController } from '@ionic/angular';
 import { CameraService } from '../services/camera.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -22,11 +23,15 @@ export class EditanimalPage implements OnInit {
   editingAnimal: Animal;
 
   novoAnimal: Animal;
-
+  private animaiscollection:AngularFirestoreCollection<Animal>;
   
 
-  constructor( public modalController: ModalController,private router:Router,private dbService: DBService,public toastCtrl:ToastController, private menu: MenuController,private cameraService: CameraService) {
+  constructor( public modalController: ModalController,private router:Router,private dbService: DBService,public toastCtrl:ToastController,
+     private menu: MenuController,private cameraService: CameraService,private afs: AngularFirestore) {
+      
       this.novoAnimal = new Animal();
+      this.animaiscollection=this.afs.collection<Animal>('animais');
+      
     
   }
 
@@ -40,10 +45,11 @@ export class EditanimalPage implements OnInit {
   save()  {
     this.menu.enable(true, 'first');
     this.menu.open('first');
+    
       if (this.editingAnimal) {
-          this.edit();
+         this.edit();
       } else {
-        //  this.insert();
+      
         console.log("errrorr");
       }
   }
@@ -59,12 +65,13 @@ export class EditanimalPage implements OnInit {
 
 
   private edit() {
-      const updatingObject = { cor: this.novoAnimal.cor,nome: this.novoAnimal.nome, porte:this.novoAnimal.porte,
-                               raca:this.novoAnimal.raca,tipo: this.novoAnimal.tipo,
+   
+      const updatingObject = { nome: this.novoAnimal.nome,porte:this.novoAnimal.porte,
+                               raca:this.novoAnimal.raca,cor: this.novoAnimal.cor,tipo: this.novoAnimal.tipo
                               
-      };
+      }
      
-      this.dbService.update('/animais', updatingObject)
+      this.dbService.update('/animais/'+this.novoAnimal.uid, updatingObject)
           .then(() => { 
            this.modalController.dismiss(this.novoAnimal);         
           this.presentToast('Animal alterado com sucesso');
@@ -78,9 +85,7 @@ export class EditanimalPage implements OnInit {
     this.router.navigate(['/animais'])
   }
   
-  async takePhoto() {
-    this.novoAnimal.picture = await this.cameraService.takePhoto();
-}
+ 
 
  
 }

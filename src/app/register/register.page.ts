@@ -28,7 +28,8 @@ export class RegisterPage implements OnInit {
     private afAuth:AngularFireAuth,
     public toastCtrl:ToastController,
     private dbService: DBService,
-    private cameraService: CameraService
+    private cameraService: CameraService,
+    private login:LoginPage
     ) {
        // usando model
        this.novoUsuario= new Usuario;
@@ -38,6 +39,8 @@ export class RegisterPage implements OnInit {
     this.afAuth.auth.createUserWithEmailAndPassword(this.novoUsuario.email,this.novoUsuario.password)
     
     .then(result=>{
+      this.novoUsuario.uid=this.login.pegarusuario().currentUser.uid;
+     
       this.dbService.insertInList<Usuario>('/usuarios', this.novoUsuario)
       this.presentToast('Usuario cadastrado com sucesso');
       this.voltlogin();

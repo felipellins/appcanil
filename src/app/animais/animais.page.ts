@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../model/animal';
 import { DBService } from '../services/db.service';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController, ToastController, LoadingController } from '@ionic/angular';
 import { EditanimalPage } from '../editanimal/editanimal.page';
 import {  Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-animais',
@@ -12,15 +13,16 @@ import {  Router } from '@angular/router';
 })
 export class AnimaisPage  {
 
-  loading: boolean;
+  //loading: boolean;
   animais: Animal[];
+  load:any;
 
-  constructor(private router:Router,public modalController: ModalController, private dbService: DBService, public toastController: ToastController) {
+  constructor(private loadingCtrl:LoadingController, private router:Router,public modalController: ModalController, private dbService: DBService, public toastController: ToastController) {
     this.init();
   }
 
   private async init() {
-    this.loading = true;
+   // this.loading = true;
 
   
     await this.listarAnimais();
@@ -29,32 +31,28 @@ export class AnimaisPage  {
   
 
   private async listarAnimais() {
-    this.dbService.listWithUIDs<Animal>('/animais')
+   
+   await this.presentLoading();
+  
+   this.dbService.listWithUIDs<Animal>('/animais')
       .then(animais => {
         this.animais = animais;
-        this.loading = false;
+       // this.loading = false;
+       this.load.dismiss();
       }).catch(error => {
-        console.log(error);
+       this.presentToast(error.message);
       });
   }
 
- 
-
-  async add() {
-    const modal = await this.modalController.create({
-      component:EditanimalPage
+  async presentLoading() {
+     this.load= await this.loadingCtrl.create({
+      message: 'Por favor aguarde',
+     
     });
+    return this.load.present();
 
-    modal.onDidDismiss()
-      .then(result => {
-        if (result.data) {
-          this.confirmAdd();
-        }
-      });
-
-    return  await modal.present();
   }
-
+ 
   private confirmAdd() {
     this.presentToast('Animal adicionado com sucesso');
     this.listarAnimais()

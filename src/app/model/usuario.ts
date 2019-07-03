@@ -5,5 +5,5 @@ export class Usuario{
    email:string;
    password:string;
    picture:string;
-
+   uid:string;
 }

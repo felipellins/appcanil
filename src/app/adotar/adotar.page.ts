@@ -12,12 +12,17 @@ import { Usuario } from '../model/usuario';
 })
 export class AdotarPage implements OnInit {
 
-  usuario:Usuario;
-  login:LoginPage;
+  usuario:Usuario[];
+  loginPage:LoginPage;
   animal: Animal;
-  constructor(private dbService: DBService,private router:Router, private activatedRoute:ActivatedRoute) { 
+  adotaUid:string;
 
-    this.usuario = new Usuario;
+  constructor(private dbService: DBService,private router:Router, private activatedRoute:ActivatedRoute, 
+    private login:LoginPage) { 
+
+    
+    this.adotaUid = this.login.pegarusuario().currentUser.uid;
+    this.loadUsuario();
   }
   
   
@@ -41,8 +46,17 @@ export class AdotarPage implements OnInit {
     
 
   }
+  private async loadUsuario(){
+ 
+    this.usuario=await this.dbService.listWithUIDs<Usuario>('/usuarios')
+  
+  }
+
   adotar(){
-  //this.usuario:this.login.pegarusuario
+  
+    
+
+    
   }
   voltmenu(){
     this.router.navigate(['/menu'])

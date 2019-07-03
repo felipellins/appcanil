@@ -23,6 +23,16 @@
          <div class="texto">
           <ion-row > raça:{{ animal?.raca}} cor:{{ animal?.cor}}  </ion-row>
           <ion-row >porte:{{ animal?.porte}} tipo:{{ animal?.tipo}}  </ion-row>
+
+
+
+          <div *ngIf="adotaUid == usuario.uid">
+
+            <ion-input [(ngModel)]="adotados.dono">nome:{{usuario.nome}}</ion-input>
+             
+  
+
+          </div>
           
         </div>
 

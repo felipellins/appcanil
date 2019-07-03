@@ -8,6 +8,7 @@ import {  Router } from '@angular/router';
 import { CameraService } from '../services/camera.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
+import { LoginPage } from '../login/login.page';
 
 
 
@@ -22,11 +23,14 @@ export class CadanimalPage implements OnInit {
   editingAnimal: Animal;
 
   novoAnimal: Animal;
-
+ 
   
 
-  constructor( private router:Router,private dbService: DBService,public toastCtrl:ToastController, private menu: MenuController,private cameraService: CameraService) {
+  constructor( private router:Router,private dbService: DBService,public toastCtrl:ToastController, 
+    private menu: MenuController,private cameraService: CameraService,
+    private login:LoginPage ) {
       this.novoAnimal = new Animal();
+
     
   }
 
@@ -62,6 +66,8 @@ export class CadanimalPage implements OnInit {
 }
 
   private insert() {
+    this.novoAnimal.useruid=this.login.pegarusuario().currentUser.uid;
+
       this.dbService.insertInList<Animal>('/animais', this.novoAnimal)
           .then(() => {
           this.presentToast('Animal cadastrado com sucesso');

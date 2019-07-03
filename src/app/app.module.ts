@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import {FormsModule} from '@angular/forms';
 // fire base
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -17,6 +18,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabase } from "@angular/fire/database";
 import { DBService } from './services/db.service';
+import { LoginPage } from './login/login.page';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,15 +28,17 @@ import { DBService } from './services/db.service';
   // pages 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule
   // outros 
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     AngularFireAuth,
     AngularFireDatabase,
+    LoginPage ,
     DBService
   ],
   bootstrap: [AppComponent]

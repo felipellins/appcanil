@@ -32,9 +32,10 @@ export class LoginPage implements OnInit {
         delete this.usuario.password;
       })
     }
+    
     pegarusuario(){
-     
-     this.usuario;
+   
+    return this.afAuth.auth;
       
 
     }
