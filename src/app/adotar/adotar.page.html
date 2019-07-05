@@ -14,30 +14,36 @@
      
         
         <ion-card-header>
-            <div class="BUT" (click)="adotar(animal)">Adotar</div> 
-          <ion-card-title class="titulo">{{ animal?.nome }}</ion-card-title>
+          
+          <ion-card-title >{{ animal?.nome }}</ion-card-title>
          
         </ion-card-header>
       
         <ion-card-content>
-         <div class="texto">
-          <ion-row > raça:{{ animal?.raca}} cor:{{ animal?.cor}}  </ion-row>
-          <ion-row >porte:{{ animal?.porte}} tipo:{{ animal?.tipo}}  </ion-row>
+              <div class="texto">
+                      <ion-row > raça:{{ animal?.raca}}  </ion-row>
+                      <ion-row>cor:{{ animal?.cor}} </ion-row>
+                      <ion-row >porte:{{ animal?.porte}}  </ion-row>
+                      <ion-row >tipo:{{ animal?.tipo}} </ion-row>
+
+                      <ion-row *ngFor="let usu of usuario" value="usu.uid">
+                              <div *ngIf="adotaUid == usu.loginUid">
+
+                              <ion-input [(ngModel)]="adotados.donoUid" >{{usu.nome}} deseja adotar?</ion-input>
+                              <ion-row> 
+                                <ion-button color="danger"(click)="adotar(usu)">Adotar</ion-button>   
+                              </ion-row>
+                              
+                            </div>
+                      
+                      </ion-row>
+                
+              
+                
+              </div>
 
 
-
-          <div *ngIf="adotaUid == usuario.uid">
-
-            <ion-input [(ngModel)]="adotados.dono">nome:{{usuario.nome}}</ion-input>
-             
-  
-
-          </div>
-          
-        </div>
-
-
-        </ion-card-content> 
+         </ion-card-content> 
        
     </ion-card>
         

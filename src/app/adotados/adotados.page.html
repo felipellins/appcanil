@@ -1,0 +1,36 @@
+
+<ion-header > 
+  <ion-toolbar class="gl-cabe">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content >
+  <div *ngIf="!loading" class="bg-adotados">
+    <div class="sobrecima">
+        <div class="center ">
+         
+            <h5 class="entrar">Animais adotados</h5>
+        </div>
+        <ion-card *ngFor="let adotado of adotados"class="item">
+          <ion-item>
+            
+            <ion-label>{{ adotado.nomeAnimal }}</ion-label>
+          </ion-item>
+        
+        </ion-card>
+       
+      
+          
+    </div>
+    
+  </div>
+  <div *ngIf="loading">
+    <p>Aguarde...</p>
+  </div>
+</ion-content>

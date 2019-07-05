@@ -16,6 +16,11 @@ export class AppComponent {
   
   public opcoesApp = [
     {
+      title: 'Inicio',
+      url: '/menu',
+      icon: 'paw' 
+    },   
+    {
       title: 'Cadastrar Animal',
       url: '/cadanimal',
       icon: 'paw'
@@ -24,9 +29,10 @@ export class AppComponent {
       title: 'Ver animais',
       url: '/animais',
       icon: 'paw' 
-    },{
-      title: 'Inicio',
-      url: '/menu',
+    }
+    ,{
+      title: 'Adotados',
+      url: '/adotados',
       icon: 'paw' 
     }
    

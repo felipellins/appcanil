@@ -4,6 +4,9 @@ import { DBService } from '../services/db.service';
 import { Animal } from '../model/animal';
 import { LoginPage } from '../login/login.page';
 import { Usuario } from '../model/usuario';
+import { ToastController, LoadingController } from '@ionic/angular';
+import { Adotados } from '../model/adotados';
+
 
 @Component({
   selector: 'app-adotar',
@@ -15,15 +18,25 @@ export class AdotarPage implements OnInit {
   usuario:Usuario[];
   loginPage:LoginPage;
   animal: Animal;
+
   adotaUid:string;
+  load:any;
+  uidanimal:string;
+  adotados :Adotados;
 
-  constructor(private dbService: DBService,private router:Router, private activatedRoute:ActivatedRoute, 
-    private login:LoginPage) { 
+  constructor(private loadingCtrl:LoadingController,private dbService: DBService,private router:Router, private activatedRoute:ActivatedRoute, 
+    private login:LoginPage,public toastCtrl:ToastController) {
+      this.loadUsuario();
 
-    
+    this.adotados= new Adotados;
     this.adotaUid = this.login.pegarusuario().currentUser.uid;
-    this.loadUsuario();
+   
   }
+  private async init() {
+   
+   
+     await this.loadUsuario();
+   }
   
   
   //carregar para deixa pronto
@@ -32,7 +45,8 @@ export class AdotarPage implements OnInit {
       if(parametros["uid"] != undefined){
         // carregar do banco
        // console.log(parametros.uid)
-
+        
+       this.uidanimal=parametros.uid
         this.dbService.getObject<Animal>("animais/"+parametros.uid)
         .then(animal=>{
           this.animal = animal;
@@ -48,19 +62,47 @@ export class AdotarPage implements OnInit {
   }
   private async loadUsuario(){
  
-    this.usuario=await this.dbService.listWithUIDs<Usuario>('/usuarios')
+    this.dbService.listWithUIDs<Usuario>('/usuarios')
+    .then(usuarios => {
+      this.usuario = usuarios;
+     
+     this.load.dismiss();
+    }).catch(error => {
+    
+    });
   
   }
 
-  adotar(){
+  async presentToast(message:string){
+      
+    const toast=await this.toastCtrl.create({ 
+      message:message,
+      duration:2000
+    });
+     toast.present();
+
+  }  
+  async adotar(usu:Usuario){
   
-    
+    this.adotados.uidAnimal=this.uidanimal;
+    this.adotados.uidDono=usu.uid;
+    this.adotados.nomeAnimal=this.animal.nome;
+    this.dbService.insertInList<Adotados>('/adotados', this.adotados)
+    .then(() => {
+     this.presentToast('Animal adotado com sucesso');
+    this.router.navigate(['/adotados']);
+  
+    }).catch(error => {
+        console.log(error);
+    });
+
 
     
   }
   voltmenu(){
     this.router.navigate(['/menu'])
   }
+  
 
   
 }

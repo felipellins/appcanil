@@ -42,6 +42,8 @@ export class AnimaisPage  {
       }).catch(error => {
        this.presentToast(error.message);
       });
+     
+      
   }
 
   async presentLoading() {

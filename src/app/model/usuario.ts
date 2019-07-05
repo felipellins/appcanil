@@ -6,4 +6,5 @@ export class Usuario{
    password:string;
    picture:string;
    uid:string;
+   loginUid:string;
 }

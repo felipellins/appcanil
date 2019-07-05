@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule',canActivate: [AuthGuard] },
   { path: 'adotar', loadChildren: './adotar/adotar.module#AdotarPageModule',canActivate: [AuthGuard] },
   { path: 'adotar/:uid', loadChildren: './adotar/adotar.module#AdotarPageModule',canActivate: [AuthGuard] },
-  { path: 'cadanimal', loadChildren: './cadanimal/cadanimal.module#CadanimalPageModule',canActivate: [AuthGuard] }
+  { path: 'cadanimal', loadChildren: './cadanimal/cadanimal.module#CadanimalPageModule',canActivate: [AuthGuard] },
+  { path: 'adotados', loadChildren: './adotados/adotados.module#AdotadosPageModule',canActivate: [AuthGuard] }
 ];
 
 @NgModule({
